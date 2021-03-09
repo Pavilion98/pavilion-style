@@ -3,15 +3,15 @@ import React from 'react';
 import CollectionItem from '../collection-item/CollectionItem';
 import './CollectionPreview.scss';
 
-const CollectionPreview = ({items, title, id}) => {
+const CollectionPreview = ({items, title}) => {
     return (
         <div className="collection-preview">
             <h2 className="title"> {title.toUpperCase()} </h2>
             <div className="preview">
                 {
-                    items.filter((item, idx) => idx < 4).map( ({id, ...otherItemProps}) => {
+                    items.filter((item, idx) => idx < 4).map( (item) => {
                         return (
-                            <CollectionItem key={id} {...otherItemProps} />
+                            <CollectionItem key={item.id} item= {item} />
                         )    
                 })
                 }

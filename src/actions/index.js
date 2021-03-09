@@ -1,6 +1,7 @@
 import {
     SET_CURRENT_USER,
-    TOGGLE_CART_HIDDEN
+    TOGGLE_CART_HIDDEN,
+    ADD_ITEM
 } from  './types';
 
 
@@ -12,4 +13,10 @@ export const setCurrentUser = user => ({
 
 export const toggleCartHidden = () => ({
     type: TOGGLE_CART_HIDDEN
+});
+
+
+export const addItem = item => ({
+    type: ADD_ITEM,
+    payload: item
 });
