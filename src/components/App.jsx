@@ -16,7 +16,6 @@ import Header from './header/Header';
 import { auth, createUserProfileDocument } from '../firebase/firebase.utils';
 
 
-
 class App extends React.Component {
 
     unsubscribeFromAuth = null;
@@ -37,7 +36,7 @@ class App extends React.Component {
             }
 
             setCurrentUser(userAuth);
-            
+            // addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title,items})))
         });
     }
 
@@ -75,6 +74,7 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
         currentUser: selectCurrentUser
+        // collectionsArray: selectCollectionsForPreview
     });
 
 

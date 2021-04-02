@@ -1,14 +1,17 @@
 import React from 'react';
-import './CollectionOverview.scss';
+// import './CollectionOverview.scss';
 import CollectionPreview from '../collection-preview/CollectionPreview';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCollectionsForPreview } from '../../actions/shop.selector';
 
+import { CollectionsOverviewContainer } from './CollectionOverview.styles';
+
+
 const CollectionOverview = ({ collections }) => {
     return (
-        <div className='collection-overview'>
+        <CollectionsOverviewContainer>
         {
             collections.map( ({id, ...otherCollectionProps}) => {
                 return (
@@ -16,7 +19,7 @@ const CollectionOverview = ({ collections }) => {
                 )
             })
         }
-    </div>
+    </CollectionsOverviewContainer>
     )
 }
 
