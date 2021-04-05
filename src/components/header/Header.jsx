@@ -13,17 +13,19 @@ import { selectCurrentUser } from '../../actions/user.selector';
 import 
 {   HeaderContainer,
     LogoContainer,
+    HeaderIcon,
     OptionsContainer,
     OptionLink
 } 
-from './Header.styles'
+from './Header.styles';
 
 
 const Header = ({ currentUser, hidden }) => {
     return (
         <HeaderContainer>
             <LogoContainer to='/'>
-                Pavilion Style
+                <HeaderIcon />
+                <h3>Pavilion Style</h3>
             </LogoContainer>
             <OptionsContainer>
                 <OptionLink to="/shop">

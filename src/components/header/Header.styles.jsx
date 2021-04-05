@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
+import { ReactComponent as HeaderIconSvg } from '../../assests/hairstyle.svg'
 
 // const OptionContainerStyles = css `
 //     padding: 10px 15px;
@@ -19,8 +20,13 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled(Link)`
     height: 100%;
     width: 20%;
-    padding: 25px;
-    font-size: 20px;
+    padding: 10px;
+    display: flex; 
+`;
+
+export const HeaderIcon = styled(HeaderIconSvg)`
+  width: 50px;
+  height: 50px;
 `;
 
 export const OptionsContainer = styled.div `

@@ -4,8 +4,12 @@ import {
     ADD_ITEM,
     REMOVE_ITEM,
     CLEAR_ITEM_FROM_CART,
-    UPDATE_COLLECTIONS
+    FETCH_COLLECTIONS_START,
+    FETCH_COLLECTIONS_SUCCESS,
+    FETCH_COLLECTIONS_FAILURE
 } from  './types';
+
+import { firestore, convertCollectionsSnapshotToMap } from '../firebase/firebase.utils';
 
 
 export const setCurrentUser = user => ({
@@ -42,7 +46,32 @@ export const clearItemFromCart = item => ({
 
 
 
-export const updateCollections = collectionsMap => ({
-    type: UPDATE_COLLECTIONS,
+export const fetchCollectionsStart = () => ({
+    type: FETCH_COLLECTIONS_START
+});
+
+export const fetchCollectionsSuccess = collectionsMap => ({
+    type: FETCH_COLLECTIONS_SUCCESS,
     payload: collectionsMap
 });
+
+export const fetchCollectionsFailure = errorMessage => ({
+    type: FETCH_COLLECTIONS_FAILURE,
+    payload: errorMessage
+});
+
+
+
+//we are moving the code from Shop componentDidMount to here
+export const fetchCollectionsStartAsync = () => {
+    return dispatch => {
+        const collectionRef = firestore.collection('collections');
+        dispatch(fetchCollectionsStart());
+
+        collectionRef.get().then(snapshot => {
+            const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+            // updateCollections(collectionsMap);
+            dispatch(fetchCollectionsSuccess(collectionsMap));
+        }).catch(error => dispatch(fetchCollectionsFailure(error.message)));
+    };
+};
