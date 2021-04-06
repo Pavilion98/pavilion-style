@@ -24,8 +24,7 @@ const Header = ({ currentUser, hidden }) => {
     return (
         <HeaderContainer>
             <LogoContainer to='/'>
-                <HeaderIcon />
-                <h3>Pavilion Style</h3>
+                <HeaderIcon />  <h3>Pavilion Style</h3>
             </LogoContainer>
             <OptionsContainer>
                 <OptionLink to="/shop">
